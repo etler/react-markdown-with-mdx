@@ -1,0 +1,6 @@
+{
+  "embeddedLanguageFormatting": "off",
+  "printWidth": 120,
+  "semi": true,
+  "quoteProps": "consistent"
+}
