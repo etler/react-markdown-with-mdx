@@ -117,7 +117,11 @@ All other options from [react-markdown][react-markdown] are supported, including
 
 Component type for creating a components mapping object.
 
-### `mdxComponent<P>(Component: React.FC<P>, validator: ZodType<P>) => React.FC<ComponentProps>`
+### `mdxComponent(Component, validator)`
+
+```typescript
+mdxComponent<P>(Component: React.FC<P>, validator: ZodType<P>) => React.FC<ComponentProps>
+```
 
 Optional validation helper function that takes a functional component along with a zod validator that ensures the `react-markdown` props are mapped to the provided component.
 
