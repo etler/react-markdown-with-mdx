@@ -1,10 +1,17 @@
-import type { Options } from "react-markdown";
+import type { Components, ExtraProps, Options } from "react-markdown";
 import type { PluggableList } from "unified";
 import type {} from "mdast-util-mdx-jsx";
-import React from "react";
+import {
+  createElement,
+  type ComponentType,
+  type PropsWithChildren,
+  type ReactElement,
+  type FunctionComponent,
+} from "react";
 import { rehypeMdxElements } from "rehype-mdx-elements";
 import { remarkUnravelMdx } from "remark-unravel-mdx";
 import remarkMdx from "remark-mdx";
+import type { ZodType } from "zod";
 
 interface WithMdxOptions extends Options {
   remarkMdxPlugins?: PluggableList | null | undefined;
@@ -19,7 +26,7 @@ interface WithMdxOptions extends Options {
  * @param MarkdownComponent - The react-markdown component to enhance
  * @returns Enhanced component with MDX support
  */
-export function withMdx(MarkdownComponent: React.ComponentType<Options>): React.ComponentType<WithMdxOptions> {
+export function withMdx(MarkdownComponent: ComponentType<Options>): ComponentType<WithMdxOptions> {
   return function ReactMarkdownWithMdx({
     components,
     remarkPlugins,
@@ -27,7 +34,7 @@ export function withMdx(MarkdownComponent: React.ComponentType<Options>): React.
     rehypePlugins,
     remarkRehypeOptions,
     ...props
-  }: WithMdxOptions): React.ReactElement {
+  }: WithMdxOptions): ReactElement {
     // Extend user provided plugins with MDX required plugins
     const mergedRemarkPlugins: PluggableList = [
       remarkMdx,
@@ -48,7 +55,7 @@ export function withMdx(MarkdownComponent: React.ComponentType<Options>): React.
       ...remarkRehypeOptions,
     };
 
-    return React.createElement(MarkdownComponent, {
+    return createElement(MarkdownComponent, {
       ...props,
       components,
       remarkPlugins: mergedRemarkPlugins,
@@ -57,3 +64,20 @@ export function withMdx(MarkdownComponent: React.ComponentType<Options>): React.
     });
   };
 }
+
+type ComponentProps = PropsWithChildren<ExtraProps>;
+
+export type MdxComponents = Components & Record<string, React.FC<ComponentProps>>;
+
+export const mdxComponent = <P extends Record<string, unknown>>(
+  Component: React.FC<P>,
+  validator: ZodType<P>,
+): FunctionComponent<ComponentProps> => {
+  const ReactMarkownComponent: React.FC<ComponentProps> = ({ node, children }) => {
+    const props = validator.parse({ ...node?.properties, children });
+    return createElement(Component, {
+      ...props,
+    });
+  };
+  return ReactMarkownComponent;
+};
