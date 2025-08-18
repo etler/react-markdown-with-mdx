@@ -13,7 +13,7 @@ import { remarkUnravelMdx } from "remark-unravel-mdx";
 import remarkMdx from "remark-mdx";
 import type { ZodType } from "zod";
 
-interface WithMdxOptions extends Options {
+export interface WithMdxOptions extends Options {
   remarkMdxPlugins?: PluggableList | null | undefined;
 }
 
