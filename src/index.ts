@@ -67,13 +67,13 @@ export function withMdx(MarkdownComponent: ComponentType<Options>): ComponentTyp
 
 type ComponentProps = PropsWithChildren<ExtraProps>;
 
-export type MdxComponents = Components & Record<string, React.FC<ComponentProps>>;
+export type MdxComponents = Components & Record<string, FunctionComponent<ComponentProps>>;
 
 export const mdxComponent = <P extends Record<string, unknown>>(
-  Component: React.FC<P>,
+  Component: FunctionComponent<P>,
   validator: ZodType<P>,
 ): FunctionComponent<ComponentProps> => {
-  const ReactMarkownComponent: React.FC<ComponentProps> = ({ node, children }) => {
+  const ReactMarkownComponent: FunctionComponent<ComponentProps> = ({ node, children }) => {
     const props = validator.parse({ ...node?.properties, children });
     return createElement(Component, {
       ...props,
