@@ -59,8 +59,8 @@ const MarkdownWithMdx = withMdx(Markdown)
 
 // Define your custom components
 const components = {
-  Button: ({ children, variant = 'default' }) => (
-    <button className={`btn btn-${variant}`}>{children}</button>
+  Card: ({ children, variant = 'default' }) => (
+    <div className={`card card-${variant}`}>{children}</div>
   ),
   Alert: ({ message, type = 'info' }) => (
     <div className={`alert alert-${type}`}>{message}</div>
@@ -73,7 +73,7 @@ const markdown = `
 
 This is regular markdown with **bold** text.
 
-<Button variant="primary">Click me!</Button>
+<Card variant="primary">Hello!</Card>
 
 <Alert message="This is an alert" type="warning" />
 `
@@ -137,17 +137,17 @@ import Markdown from 'react-markdown'
 const MarkdownWithMdx = withMdx(Markdown)
 
 const components = {
-  CustomButton: ({ children, onClick }) => (
-    <button onClick={onClick}>{children}</button>
+  CustomCard: ({ children, primary }) => (
+    <div className={primary ? "primary-card" : "standard-card"}>{children}</div>
   )
 }
 
 const content = `
 # My Document
 
-<CustomButton onClick={() => alert('Hello!')}>
-  Click me
-</CustomButton>
+<CustomCard type="primary">
+  Hello There!
+</CustomCard>
 `
 
 <MarkdownWithMdx components={components}>{content}</MarkdownWithMdx>
@@ -163,14 +163,14 @@ const components = {
       <div className="content">{children}</div>
     </div>
   ),
-  Button: ({ children }) => <button>{children}</button>
+  Link: ({ url, children }) => <a href={url} className="card-link">{children}</a>
 }
 
 const content = `
 <Card title="Welcome">
   This is a card with **markdown** content.
 
-  <Button>Action</Button>
+  <Link url="https://www.example.com">Action</Link>
 </Card>
 `
 ```
@@ -202,14 +202,14 @@ This package maintains the security model of [react-markdown][react-markdown]:
 - All other security features of [react-markdown][react-markdown] are preserved
 
 ```jsx
-// Only Button is allowed, Script will be removed
-const components = { Button: MyButton }
+// Only Card is allowed, script will be removed
+const components = { Card: MyCard }
 
 const unsafeContent = `
-<Button>Safe</Button>
-<Script>alert('unsafe')</Script>
+<Card>Safe</Card>
+<script>alert('unsafe');</script>
 `
-// Result: Only the Button renders, Script is removed
+// Result: Only the Card renders, script is removed
 ```
 
 ## Compatibility
