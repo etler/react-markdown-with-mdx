@@ -27,9 +27,9 @@
     "fix": "npx eslint --fix"
   },
   "dependencies": {
-    "rehype-mdx-elements": "^0.1.0",
+    "rehype-mdx-elements": "^1.0.0",
     "remark-mdx": "^3.1.0",
-    "remark-unravel-mdx": "^0.1.0"
+    "remark-unravel-mdx": "^1.0.0"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
