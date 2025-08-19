@@ -225,7 +225,7 @@ It uses ES modules and requires a modern JavaScript environment.
 
 - [react-markdown][react-markdown] — The base markdown renderer
 - [remark-mdx][remark-mdx] — MDX syntax support for remark
-- [remark-unravel-mdx][remark-unravel-mdx] — Unravels MDX JSX for processing
+- [remark-unravel-mdx][remark-unravel-mdx] — Unravels MDX JSX to remove unnecessary paragraph wrappers
 - [rehype-mdx-elements][rehype-mdx-elements] — Converts MDX elements to React components
 - [@mdx-js/mdx][mdx] — Full MDX compiler
 
