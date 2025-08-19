@@ -150,6 +150,7 @@ const components: MdxComponents = {
       id: z.string(),
       title: z.string(),
       type: z.union([z.literal("standard"), z.literal("primary")]).optional(),
+      children: z.any()
     })
   )
 }
