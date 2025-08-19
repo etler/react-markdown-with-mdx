@@ -233,6 +233,8 @@ It uses ES modules and requires a modern JavaScript environment.
 
 [MIT][license] © [Tim Etler][author]
 
+[license]: LICENSE.md
+[author]: https://github.com/etler
 [react]: https://reactjs.org/
 [react-markdown]: https://github.com/remarkjs/react-markdown
 [remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
@@ -240,5 +242,3 @@ It uses ES modules and requires a modern JavaScript environment.
 [rehype-mdx-elements]: https://github.com/etler/rehype-mdx-elements
 [mdx]: https://github.com/mdx-js/mdx
 [node]: https://nodejs.org/
-[license]: LICENSE.md
-[author]: https://github.com/etler
