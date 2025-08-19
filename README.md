@@ -125,6 +125,35 @@ mdxComponent<P>(Component: React.FC<P>, validator: ZodType<P>) => React.FC<Compo
 
 Optional validation helper function that takes a functional component along with a zod validator that ensures the `react-markdown` props are mapped to the provided component.
 
+```tsx
+interface CustomCardProps extends React.PropsWithChildren {
+  id: string
+  title: string
+  type?: "standard" | "primary"
+}
+
+const CustomCard: React.FC<CustomCardProps> = memo(function CustomCard({
+  id,
+  title,
+  type,
+  children
+}) {
+  return <div data-id={id} className={type === "primary" ? "primary-card" : "standard-card"}>
+    <h2>{title}</h2>
+    {children}
+  </div>
+}
+
+const components: MdxComponents = {
+  CustomCard: mdxComponent(CustomCard,
+    z.object({
+      id: z.string(),
+      title: z.string(),
+      type: z.union([z.literal("standard"), z.literal("primary")]).optional(),
+    })
+  )
+}
+```
 
 ## Examples
 
