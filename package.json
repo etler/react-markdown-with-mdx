@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-with-mdx",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "repository": "github:etler/react-markdown-with-mdx",
   "license": "MIT",
   "type": "module",
@@ -27,9 +27,9 @@
     "fix": "npx eslint --fix"
   },
   "dependencies": {
-    "rehype-mdx-elements": "^0.0.1",
+    "rehype-mdx-elements": "^0.1.0",
     "remark-mdx": "^3.1.0",
-    "remark-unravel-mdx": "^0.0.1"
+    "remark-unravel-mdx": "^0.1.0"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
