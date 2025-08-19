@@ -42,7 +42,7 @@ export function withMdx(MarkdownComponent: ComponentType<Options>): ComponentTyp
       ...(remarkMdxPlugins ?? []),
     ];
 
-    const allowedComponents = components && Object.keys(components);
+    const allowedComponents = components ? Object.keys(components) : undefined;
     const mergedRehypePlugins: PluggableList = [
       [rehypeMdxElements, { allowedElements: allowedComponents }],
       ...(rehypePlugins ?? []),
