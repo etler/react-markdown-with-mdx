@@ -1,6 +1,5 @@
 import type { Components, ExtraProps, Options } from "react-markdown";
 import type { PluggableList } from "unified";
-import type {} from "mdast-util-mdx-jsx";
 import {
   createElement,
   type ComponentType,
