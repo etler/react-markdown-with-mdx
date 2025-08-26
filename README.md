@@ -33,6 +33,10 @@ Use this package when you want to:
 
 Don't use this package if you need full MDX features like imports, exports, or expression execution - use [@mdx-js/mdx][mdx] instead.
 
+## How does it work?
+
+For a technical deep dive [see here](https://www.timetler.com/2025/08/19/unlocking-rich-ui-components-in-ai/).
+
 ## Install
 
 This package is ESM only.
